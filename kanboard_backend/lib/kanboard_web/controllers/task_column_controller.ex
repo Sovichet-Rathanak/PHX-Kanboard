@@ -15,6 +15,7 @@ defmodule KanboardWeb.TaskColumnController do
 
   def create(conn, %{"task_column" => task_column_params}) do
     with {:ok, %TaskColumn{} = task_column} <- Column.create_task_column(task_column_params) do
+      task_column = Repo.preload(task_column, :tasks)
       conn
       |> put_status(:created)
       |> put_resp_header("location", ~p"/api/columns/#{task_column}")
@@ -23,7 +24,7 @@ defmodule KanboardWeb.TaskColumnController do
   end
 
   def show(conn, %{"id" => id}) do
-    task_column = Repo.get!(TaskColumn, id) |> Repo.preload(:tasks)
+    task_column = Kanboard.Column.TaskColumn |> Repo.get!(TaskColumn, id) |> Repo.preload(:tasks)
     json(conn, data(task_column))
   end
 
@@ -45,6 +46,7 @@ defmodule KanboardWeb.TaskColumnController do
 
     with {:ok, %TaskColumn{} = task_column} <-
            Column.update_task_column(task_column, task_column_params) do
+      task_column = Repo.preload(task_column, :tasks)
       render(conn, :show, task_column: task_column)
     end
   end

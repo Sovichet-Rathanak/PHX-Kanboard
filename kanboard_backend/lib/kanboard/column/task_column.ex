@@ -2,6 +2,7 @@ defmodule Kanboard.Column.TaskColumn do
   use Ecto.Schema
   import Ecto.Changeset
 
+  @derive {Jason.Encoder, only: [:id, :column_title, :tasks]}
   schema "columns" do
     field :column_title, :string
     has_many :tasks, Kanboard.Todos.Task, foreign_key: :column_id
