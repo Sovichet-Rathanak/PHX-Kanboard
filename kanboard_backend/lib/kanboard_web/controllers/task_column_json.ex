@@ -18,7 +18,8 @@ defmodule KanboardWeb.TaskColumnJSON do
   defp data(%TaskColumn{} = task_column) do
     %{
       id: task_column.id,
-      column_title: task_column.column_title
+      column_title: task_column.column_title,
+      tasks: task_column.tasks
     }
   end
 end

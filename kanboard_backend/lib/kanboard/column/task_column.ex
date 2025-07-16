@@ -4,8 +4,8 @@ defmodule Kanboard.Column.TaskColumn do
 
   schema "columns" do
     field :column_title, :string
-
-    timestamps(type: :utc_datetime)
+    has_many :tasks, Kanboard.Todos.Task, foreign_key: :column_id
+    timestamps()
   end
 
   @doc false
