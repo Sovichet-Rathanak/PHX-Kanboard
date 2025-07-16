@@ -1,0 +1,19 @@
+meta {
+  name: create column
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{base_url}}/columns
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "task_column":{
+      "column_title": "In Progess"
+    }
+  }
+}

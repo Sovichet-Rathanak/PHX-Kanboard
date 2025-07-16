@@ -1,0 +1,9 @@
+{
+  "version": "1",
+  "name": "PhoenixKanboard",
+  "type": "collection",
+  "ignore": [
+    "node_modules",
+    ".git"
+  ]
+}

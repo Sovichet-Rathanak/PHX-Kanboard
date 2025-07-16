@@ -1,0 +1,21 @@
+meta {
+  name: create task
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{base_url}}/tasks
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "task":{
+      "task_title": "Learn full stack with phoenix",
+      "due_date": "2025-07-18",
+      "task_status": "medium"
+    }
+  }
+}
